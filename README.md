@@ -39,3 +39,7 @@ A continuación las evidencias del desarrollo de las tareas pendientes del curso
 ### Presentado por:
 
 Johan Naranjo Ramírez - johannaranjo@gmail.com
+
+#
+
+Puede crear una cuenta de usuario haciendo [click aquí](https://nodejs.tecnopymes.net/auth/registro).
