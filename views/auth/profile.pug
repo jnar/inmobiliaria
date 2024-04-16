@@ -1,0 +1,36 @@
+extends ../layout/admin
+
+block styles
+
+block contenido 
+    //- pre= JSON.stringify(user, undefined, 2)
+
+    div(class="py-5")
+        h1(class="text-4xl my-10 font-extrabold text-center")= user.name
+
+        div(class="mt-5 md:flex md:gap-4")
+            div(class="md:w-2/3 bg-white shadow rounded-lg")
+                h2(class="text-2xl leading-10 font-bold text-gray-900") Información del Usuario
+
+                div(class="grid grid-cols-1 md:grid-cols-2")
+                    p(class="font-bold text-gray-600 text-sm") Nombre
+                        span(class="text-lg text-gray-800 block")= user.name
+                    p(class="font-bold text-gray-600 text-sm") Email
+                        span(class="text-lg text-gray-800 block")= user.email
+                    p(class="font-bold text-gray-600 text-sm") Fecha Creación
+                        span(class="text-lg text-gray-800 block")= formateDate(user.createdAt)
+                    p(class="font-bold text-gray-600 text-sm") Confirmado
+                        span(class="text-lg text-gray-800 block")= user.confirmed == true ? 'Si' : 'No'
+                    p(class="font-bold text-gray-600 text-sm") Id
+                        span(class="text-lg text-gray-800 block")= user.id
+            
+            
+            div(class="md:w-1/3")
+                h3(class="text-center py-10 text-2xl font-bold text-gray-900") Opciones
+                div(class="grid grid-cols-1 md:grid-cols-2 text-center")
+                    if !esUsr
+                        a(href="/mis-propiedades" class="w-full py-3 mt-2 bg-yellow-500 hover:bg-yellow-600 rounded text-white font-bold uppercase cursor-pointer text-center") Volver
+                    else 
+                        a(href=`/auth/cambiar-password/${user.id}` class="w-full py-3 mt-2 bg-indigo-500 hover:bg-indigo-600 rounded text-white font-bold uppercase cursor-pointer text-center") Cambiar Password
+
+block scripts

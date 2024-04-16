@@ -1,0 +1,12 @@
+extends ./layout/public
+
+block contenido 
+        section(class="py-4")
+            h2(class="text-center text-4xl font-bold py-10")= page
+
+            if properties.length
+                div(class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5")
+                    each property in properties
+                        include ./partials/card
+            else
+                p(class="text-center text-2xl py-10") No hay resultados

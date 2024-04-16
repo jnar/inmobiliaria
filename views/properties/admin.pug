@@ -1,0 +1,54 @@
+extends ../layout/admin
+block contenido
+    div.py-10
+        h1.text-4xl.my-10.font-extrabold.text-center Bienes 
+            span.font-normal Raices
+        h2.text-center.text-4xl.font-extrabold= page
+
+        a(href="/propiedad/crear" class="rounded p-2 bg-indigo-600 hover:bg-indigo-800 text-sm text-white uppercase inline-block my-5 text-center w-full sm:w-auto") Publicar propiedad
+
+        //- p= `${userId}`
+        //- p= JSON.stringify(properties, undefined, 2)
+        
+        if properties.length
+
+            div(class="bg-white shadow rounded-lg")
+                ul(class="divide-y divide-gray-200")
+                    each property in properties
+                        li
+                            div(class="p-6 w-full flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-8 gap-4")
+                                div(class="sm:w-1/4 md:w-1/6")
+                                    a(href=`propiedad/${property.id}` class="cursor-pointer") 
+                                        img(src=`uploads/${property.image}`, alt=`${property.title}`)
+
+                                div(class="sm:w-2/4 md:w-3/6 lg:w-4/6")
+                                    a(href=`propiedad/${property.id}`  class="cursor-pointer") 
+                                        p(class="block text-2xl font-extrabold text-blue-600 truncate")=property.title
+                                    p(class="text-sm text-black font-bold")=property.category.name
+                                    p=property.price.name
+                                    a(href=`/mensajes/${property.id}` class="text-indigo-600")= `${property.messages.length} Mensajes`
+
+                                div(class="sm:w-1/4 md:w-2/6 lg:flex-1 flex flex-col gap-2 lg:flex-row")
+                                    form(method="post" action=`/propiedad/actualizar/estado/${property.id}`)
+                                        input(type="hidden" name="_csrf" value= csrfToken)
+                                        input(type="submit" class=`w-full px-2  py-2 md:py-1 text-xs leading-5 font-semibold rounded-sm cursor-pointer ${property.published  ? 'bg-green-100 text-green-800' : 'bg-orange-100 text-orange-800'}` value=`${property.published  ? 'Publicado' : 'No Publicado'}`)
+                                    
+                                    a(href=`/propiedades/editar/${property.id}` class="px-2  py-2 md:py-1 text-xs text-center leading-5 font-semibold rounded-sm cursor-pointer bg-indigo-100 text-indigo-800") Editar
+
+                                    form(method="post" action=`/propiedad/eliminar/${property.id}`)
+                                        input(type="hidden" name="_csrf" value= csrfToken)
+                                        input(type="submit" class=`w-full px-2  py-2 md:py-1 text-xs leading-5 font-semibold rounded-sm cursor-pointer bg-red-100 text-red-800` value="Eliminar")
+
+                div(class="bg-white px-4 py-3 border-t border-gray-300 flex items-center justify-between")
+                    div(class="")
+                        p(class="text-sm text-gray-700 gap-2") Mostrando
+                            span(class="font-medium mx-1") #{offset + 1 } a
+                            span(class="font-medium mx-1") #{limit + offset} de
+                            span(class="font-medium mx-1") #{total} resultados
+                    div 
+                        nav(class="relative z-0 inline-flex rounded-md shadow-md")
+                            - var num = 1
+                                while  num <= paginacion
+                                    a(href=`/mis-propiedades?page=${num}` class=`${paginaActual == num ? 'bg-gray-500 border-gray-500 text-white'  : 'bg-white border-gray-300 text-gray-900 hover:bg-gray-500' } relative inline-flex items-center px-4 py-2 border text-sm font-medium`) #{num++}
+        else 
+            p.text-center No has publicado ninguna propiedad

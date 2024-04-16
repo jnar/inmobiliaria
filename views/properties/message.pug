@@ -1,0 +1,24 @@
+extends ../layout/admin
+
+block contenido
+    h2(class="text-center font-extrabold text-4xl my-10")= page
+
+    a(href="#" class="rounded p-2 bg-indigo-600 hover:bg-indigo-800 text-sm text-white uppercase inline-block my-5 text-center w-full sm:w-auto") Regresar
+
+    //- pre= JSON.stringify(messages, undefined, 2)
+
+    div(class="mx-auto max-w-4xl bg-white shadow")
+        if messages.length
+            ul
+                each message in messages 
+                    li(class="border-gray-200 border p-5")
+                        p(class="font-bold") Nombre:
+                            span(class="font-normal")= message.user.name
+                        p(class="font-bold") Correo:
+                            span(class="font-normal")= message.user.email
+                        p(class="font-bold") Mensaje :
+                            span(class="font-normal")= message.message
+                        p(class="font-bold") Enviado :
+                            span(class="font-normal")= formateDate(message.createdAt)
+        else
+            p(class="text-center text-2xl p-4") No hay mensajes

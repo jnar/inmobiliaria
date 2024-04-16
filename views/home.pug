@@ -1,0 +1,47 @@
+extends ./layout/public
+
+block styles
+    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css")
+
+block contenido 
+    div(class="py-5")
+        h1(class="text-center text-4xl font-extrabold mb-10") Ubicacion en el Mapa
+
+        //- Filtro
+        div(class="flex flex-col md:flex-row items-center py-10 gap-4")
+            h2(class="text-sm uppercase font-bold") Filtrar por:
+
+            div(class="w-full md:w-auto flex items-center gap-2")
+                label(for=categories class="text-sm uppercase w-24 font-bold") Categorias
+                select(id="categories" class="bg-white w-full px-3 py-2 border rounded-md shadow") 
+                    option(value="") Seleccionar
+                    each category in categories
+                        option(value=category.id)= category.name
+
+                label(for=prices class="text-sm uppercase w-24 font-bold") Precios
+                select(id="prices" class="bg-white w-full px-3 py-2 border rounded-md shadow") 
+                    option(value="") Seleccionar
+                    each price in prices
+                        option(value=price.id)= price.name
+
+        div(id="mapa-home" class="h-96")
+
+
+        section(class="py-4")
+            h2(class="text-center text-4xl font-bold py-10") Casas en Venta
+
+            div(class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5")
+                each property in houses
+                    include ./partials/card
+
+
+        section(class="py-4")
+            h2(class="text-center text-4xl font-bold py-10") Departamentos en Venta
+
+            div(class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5")
+                each property in departments
+                    include ./partials/card
+
+block scripts
+    script(src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js") 
+    script(src='/js/mapaHome.js')
