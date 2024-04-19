@@ -30,7 +30,7 @@ A continuación las evidencias del desarrollo de las tareas pendientes del curso
 
 ## Publicar el proyecto:
 
-- [URL https://nodejs.tecnopymes.net](https://nodejs.tecnopymes.net)
+- [URL = click aqui.<--](http://167.114.67.175:3000)
 
 - [Repositorio Github](https://github.com/jnar/inmobiliaria)
 
@@ -42,4 +42,4 @@ Johan Naranjo Ramírez - johannaranjo@gmail.com
 
 #
 
-Puede crear una cuenta de usuario haciendo [click aquí](https://nodejs.tecnopymes.net/auth/registro).
+Puede crear una cuenta de usuario haciendo [click aquí](http://167.114.67.175:3000/auth/registro).
