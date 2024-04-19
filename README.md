@@ -34,7 +34,7 @@ A continuación las evidencias del desarrollo de las tareas pendientes del curso
 
 - [Repositorio Github](https://github.com/jnar/inmobiliaria)
 
-### Pendiente: Habilitar el correo real
+# Envío de emails: OK
 
 ### Presentado por:
 
