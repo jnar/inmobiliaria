@@ -32,6 +32,9 @@ A continuación las evidencias del desarrollo de las tareas pendientes del curso
 
 - [URL = click aqui.<--](http://167.114.67.175:3000)
 
+  - Usuario pruebas: johan@test.com
+  - Contraseña: 123456
+
 - [Repositorio Github](https://github.com/jnar/inmobiliaria)
 
 # Envío de emails: OK
